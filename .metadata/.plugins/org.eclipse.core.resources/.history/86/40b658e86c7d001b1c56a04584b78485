@@ -1,0 +1,11 @@
+package model.entity;
+
+import java.time.LocalDate;
+
+public class Vacina {
+
+		private String paisOrigem;
+		private String estagioPesquisa;
+		private LocalDate dataInicio;
+		private String nomePesquisador;
+}
