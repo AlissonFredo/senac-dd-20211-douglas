@@ -1,28 +1,30 @@
 package model.entity;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Pessoa {
-	
+
 	private String nome;
 	private String sexo;
 	private String cpf;
 	private LocalDate dataNacimento;
-	private Vacina vacina;
-	private int reacaoVacina;
-	
+	private int tipo;
+	private List<AplicacaoVacina> vacinacoes;
+
 	public Pessoa() {
 		super();
 	}
 
-	public Pessoa(String nome, String sexo, String cpf, LocalDate dataNacimento, Vacina vacina, int reacaoVacina) {
+	public Pessoa(String nome, String sexo, String cpf, LocalDate dataNacimento, int tipo,
+			List<AplicacaoVacina> vacinacoes) {
 		super();
 		this.nome = nome;
 		this.sexo = sexo;
 		this.cpf = cpf;
 		this.dataNacimento = dataNacimento;
-		this.vacina = vacina;
-		this.reacaoVacina = reacaoVacina;
+		this.tipo = tipo;
+		this.vacinacoes = vacinacoes;
 	}
 
 	public String getNome() {
@@ -57,19 +59,20 @@ public class Pessoa {
 		this.dataNacimento = dataNacimento;
 	}
 
-	public Vacina getVacina() {
-		return vacina;
+	public int getTipo() {
+		return tipo;
 	}
 
-	public void setVacina(Vacina vacina) {
-		this.vacina = vacina;
+	public void setTipo(int tipo) {
+		this.tipo = tipo;
 	}
 
-	public int getReacaoVacina() {
-		return reacaoVacina;
+	public List<AplicacaoVacina> getVacinacoes() {
+		return vacinacoes;
 	}
 
-	public void setReacaoVacina(int reacaoVacina) {
-		this.reacaoVacina = reacaoVacina;
+	public void setVacinacoes(List<AplicacaoVacina> vacinacoes) {
+		this.vacinacoes = vacinacoes;
 	}
+
 }
