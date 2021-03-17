@@ -5,7 +5,7 @@ import java.util.List;
 public class Cliente {
 
 	private String nome;
-	private String cpg;
+	private String cpf;
 	private Endereco endereco;
 	private List<Telefone> telefones;
 	private boolean ativo;
@@ -14,10 +14,10 @@ public class Cliente {
 		super();
 	}
 
-	public Cliente(String nome, String cpg, Endereco endereco, List<Telefone> telefones, boolean ativo) {
+	public Cliente(String nome, String cpf, Endereco endereco, List<Telefone> telefones, boolean ativo) {
 		super();
 		this.nome = nome;
-		this.cpg = cpg;
+		this.cpf = cpf;
 		this.endereco = endereco;
 		this.telefones = telefones;
 		this.ativo = ativo;
@@ -31,12 +31,12 @@ public class Cliente {
 		this.nome = nome;
 	}
 
-	public String getCpg() {
-		return cpg;
+	public String getCpf() {
+		return cpf;
 	}
 
-	public void setCpg(String cpg) {
-		this.cpg = cpg;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 	public Endereco getEndereco() {
@@ -63,4 +63,9 @@ public class Cliente {
 		this.ativo = ativo;
 	}
 
+	@Override
+	public String toString() {
+		return "Cliente [nome=" + nome + ", cpf=" + cpf + ", endereco=" + endereco + ", telefones=" + telefones
+				+ ", ativo=" + ativo + "]";
+	}
 }

@@ -2,3 +2,5 @@ INDEX VERSION 1.131+/home/douglas/Documentos/meusProjetos/senac-dd-20211-douglas
 1635256229.index
 2048904938.index
 600624737.index
+1489639021.index
+554332669.index

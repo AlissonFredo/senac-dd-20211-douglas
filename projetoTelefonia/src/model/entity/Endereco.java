@@ -2,6 +2,7 @@ package model.entity;
 
 public class Endereco {
 
+	private Integer id;
 	private String logradouro;
 	private String numero;
 	private String cidade;
@@ -19,6 +20,14 @@ public class Endereco {
 		this.cidade = cidade;
 		this.uf = uf;
 		this.cep = cep;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getLogradouro() {
@@ -61,4 +70,9 @@ public class Endereco {
 		this.cep = cep;
 	}
 
+	@Override
+	public String toString() {
+		return "Endereco [id=" + id + ", logradouro=" + logradouro + ", numero=" + numero + ", cidade=" + cidade
+				+ ", uf=" + uf + ", cep=" + cep + "]";
+	}
 }

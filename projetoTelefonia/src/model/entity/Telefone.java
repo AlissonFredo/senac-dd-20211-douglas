@@ -2,9 +2,11 @@ package model.entity;
 
 public class Telefone {
 
+	private Integer id;
 	private String codigoInternacional;
 	private String ddd;
 	private String numero;
+	private Cliente dono;
 	private boolean movel;
 	private boolean ativo;
 
@@ -12,13 +14,32 @@ public class Telefone {
 		super();
 	}
 
-	public Telefone(String codigoInternacional, String ddd, String numero, boolean movel, boolean ativo) {
+	public Telefone(Integer id, String codigoInternacional, String ddd, String numero, Cliente dono, boolean movel,
+			boolean ativo) {
 		super();
+		this.id = id;
 		this.codigoInternacional = codigoInternacional;
 		this.ddd = ddd;
 		this.numero = numero;
+		this.dono = dono;
 		this.movel = movel;
 		this.ativo = ativo;
+	}
+
+	public Cliente getDono() {
+		return dono;
+	}
+
+	public void setDono(Cliente dono) {
+		this.dono = dono;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getCodigoInternacional() {
@@ -61,4 +82,9 @@ public class Telefone {
 		this.ativo = ativo;
 	}
 
+	@Override
+	public String toString() {
+		return "Telefone [id=" + id + ", codigoInternacional=" + codigoInternacional + ", ddd=" + ddd + ", numero="
+				+ numero + ", dono=" + dono + ", movel=" + movel + ", ativo=" + ativo + "]";
+	}
 }
