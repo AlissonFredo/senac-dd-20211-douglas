@@ -95,13 +95,7 @@ public class EnderecoDAO {
 			stmt.setInt(1, idEndereco);
 			ResultSet resultadoConsulta = stmt.executeQuery();
 			if (resultadoConsulta.next()) {
-				endereco = new Endereco();
-				endereco.setId(resultadoConsulta.getInt("idEndereco"));
-				endereco.setLogradouro(resultadoConsulta.getString("logradouro"));
-				endereco.setNumero(resultadoConsulta.getString("numero"));
-				endereco.setCidade(resultadoConsulta.getString("cidade"));
-				endereco.setUf(resultadoConsulta.getString("uf"));
-				endereco.setCep(resultadoConsulta.getString("cep"));
+				endereco = this.converterDoResultSet(resultadoConsulta);
 			}
 		} catch (SQLException e) {
 			System.out.println("Erro ao consultar endereço: \n" + e.getMessage());
@@ -124,13 +118,7 @@ public class EnderecoDAO {
 		try {
 			ResultSet resultadoConsulta = stmt.executeQuery();
 			while (resultadoConsulta.next()) {
-				Endereco endereco = new Endereco();
-				endereco.setId(resultadoConsulta.getInt("idEndereco"));
-				endereco.setLogradouro(resultadoConsulta.getString("logradouro"));
-				endereco.setNumero(resultadoConsulta.getString("numero"));
-				endereco.setCidade(resultadoConsulta.getString("cidade"));
-				endereco.setUf(resultadoConsulta.getString("uf"));
-				endereco.setCep(resultadoConsulta.getString("cep"));
+				Endereco endereco = this.converterDoResultSet(resultadoConsulta);
 				enderecos.add(endereco);
 			}
 		} catch (SQLException e) {
@@ -144,5 +132,16 @@ public class EnderecoDAO {
 			}
 		}
 		return enderecos;
+	}
+
+	private Endereco converterDoResultSet(ResultSet resultadoConsulta) throws SQLException {
+		Endereco endereco = new Endereco();
+		endereco.setId(resultadoConsulta.getInt("idEndereco"));
+		endereco.setLogradouro(resultadoConsulta.getString("logradouro"));
+		endereco.setNumero(resultadoConsulta.getString("numero"));
+		endereco.setCidade(resultadoConsulta.getString("cidade"));
+		endereco.setUf(resultadoConsulta.getString("uf"));
+		endereco.setCep(resultadoConsulta.getString("cep"));
+		return endereco;
 	}
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Cliente {
 
+	private Integer idCliente;
 	private String nome;
 	private String cpf;
 	private Endereco endereco;
@@ -21,6 +22,14 @@ public class Cliente {
 		this.endereco = endereco;
 		this.telefones = telefones;
 		this.ativo = ativo;
+	}
+
+	public Integer getIdCliente() {
+		return idCliente;
+	}
+
+	public void setIdCliente(Integer idCliente) {
+		this.idCliente = idCliente;
 	}
 
 	public String getNome() {
@@ -65,7 +74,7 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-		return "Cliente [nome=" + nome + ", cpf=" + cpf + ", endereco=" + endereco + ", telefones=" + telefones
-				+ ", ativo=" + ativo + "]";
+		return "Cliente [idCliente=" + idCliente + ", nome=" + nome + ", cpf=" + cpf + ", endereco=" + endereco
+				+ ", telefones=" + telefones + ", ativo=" + ativo + "]";
 	}
 }
