@@ -13,7 +13,7 @@ import model.entity.Endereco;
 public class ClienteDAO {
 
 	public Cliente cadastrar(Cliente cliente) {
-		String sql = "INSERT INTO cliente  (NOME, CPF, IDENDERECO, ATIVO) VALUES (?, ?, ?, ?)";
+		String sql = "INSERT INTO cliente  (NOME, CPF, ID_ENDERECO, ATIVO) VALUES (?, ?, ?, ?)";
 		try (Connection conexao = Banco.getConnection();
 				PreparedStatement stmt = Banco.getPreparedStatementWithPk(conexao, sql);) {
 			stmt.setString(1, cliente.getNome());
@@ -33,13 +33,14 @@ public class ClienteDAO {
 
 	public boolean atualizar(Cliente cliente) {
 		boolean atualizado = false;
-		String sql = "UPDATE cliente SET NOME = ?, CPF = ?, IDENDERECO = ?, ATIVO = ? WHERE IDCLIENTE = ?";
+		String sql = "UPDATE cliente SET NOME = ?, CPF = ?, ID_ENDERECO = ?, ATIVO = ? WHERE ID_CLIENTE = ?";
 		try (Connection conexao = Banco.getConnection();
 				PreparedStatement stmt = Banco.getPreparedStatement(conexao, sql);) {
 			stmt.setString(1, cliente.getNome());
 			stmt.setString(2, cliente.getCpf());
 			stmt.setInt(3, cliente.getEndereco().getId());
 			stmt.setBoolean(4, cliente.isAtivo());
+			stmt.setInt(5, cliente.getIdCliente());
 			atualizado = stmt.executeUpdate() > 0;
 		} catch (SQLException e) {
 			System.out.println("Erro ao atualizar cliente: \n" + e.getMessage());
@@ -49,10 +50,11 @@ public class ClienteDAO {
 
 	public boolean excluir(Integer idCliente) {
 		boolean excluir = false;
-		String sql = "DELETE FROM cliente WHERE IDCLIENTE = ?";
+		String sql = "DELETE FROM cliente WHERE ID_CLIENTE = ?";
 		try (Connection conexao = Banco.getConnection();
 				PreparedStatement stmt = Banco.getPreparedStatement(conexao, sql);) {
 			stmt.setInt(1, idCliente);
+			excluir = stmt.executeUpdate() > 0;
 		} catch (SQLException e) {
 			System.out.println("Erro ao excluir cliente: \n" + e.getMessage());
 		}
@@ -61,7 +63,7 @@ public class ClienteDAO {
 
 	public Cliente consultarUmCliente(Integer idCliente) {
 		Cliente cliente = null;
-		String sql = "SELECT * FROM cliente WHERE IDCLIENTE = ?";
+		String sql = "SELECT * FROM cliente WHERE ID_CLIENTE = ?";
 		try (Connection conexao = Banco.getConnection();
 				PreparedStatement stmt = Banco.getPreparedStatement(conexao, sql);) {
 			stmt.setInt(1, idCliente);
@@ -93,12 +95,12 @@ public class ClienteDAO {
 
 	private Cliente converterDoResultSet(ResultSet resultadoConsulta) throws SQLException {
 		Cliente cliente = new Cliente();
-		cliente.setIdCliente(resultadoConsulta.getInt("idCliente"));
+		cliente.setIdCliente(resultadoConsulta.getInt("id_cliente"));
 		cliente.setNome(resultadoConsulta.getString("nome"));
 		cliente.setCpf(resultadoConsulta.getString("cpf"));
 		cliente.setAtivo(resultadoConsulta.getBoolean("ativo"));
 
-		int idEndereco = resultadoConsulta.getInt("idEndereco");
+		int idEndereco = resultadoConsulta.getInt("id_endereco");
 		EnderecoDAO enderecoDAO = new EnderecoDAO();
 		Endereco enderecoCliente = enderecoDAO.consultarUmEndereco(idEndereco);
 		cliente.setEndereco(enderecoCliente);

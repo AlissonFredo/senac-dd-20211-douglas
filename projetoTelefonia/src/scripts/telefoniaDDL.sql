@@ -1,31 +1,33 @@
-CREATE DATABASE telefonia;
-USE telefonia;
+create database telefonia;
+use telefonia;
 
-CREATE TABLE endereco (
-	idEndereco INT NOT NULL AUTO_INCREMENT,
-	logradouro VARCHAR(500) NOT NULL,
-	numero VARCHAR(10) CHARACTER SET 'utf8' NOT NULL,
-	cidade VARCHAR(100) NOT NULL,
-	uf VARCHAR(2) NOT NULL,
-	cep VARCHAR(8) NOT NULL,
-	PRIMARY KEY (idEndereco));
-  
 CREATE TABLE telefone (
-	idTelefone INT NOT NULL AUTO_INCREMENT,
-	codigoInternacional VARCHAR(2) NOT NULL,
+	id_telefone integer auto_increment NOT NULL,
+	codigo_internacional VARCHAR(2) NOT NULL,
 	ddd VARCHAR(2) NOT NULL,
 	numero VARCHAR(9) NOT NULL,
-	movel TINYINT NOT NULL,
-	ativo TINYINT NOT NULL,
-	PRIMARY KEY (idTelefone));
-  
-CREATE TABLE cliente (
-	idcliente INT NOT NULL AUTO_INCREMENT,
-	cpf VARCHAR(11) NOT NULL,
-	ativo TINYINT NOT NULL,
-	PRIMARY KEY (idcliente),
-	CONSTRAINT clienteFK FOREIGN KEY (idcliente) REFERENCES endereco (idEndereco));
-	
-ALTER SCHEMA telefonia  DEFAULT CHARACTER SET utf8  DEFAULT COLLATE utf8_general_ci ;
+	id_cliente integer NULL,
+	movel BOOL NULL,
+	ativo BOOL NULL,
+	CONSTRAINT telefone_pk PRIMARY KEY (id_telefone)
+);
 
-ALTER TABLE telefone ADD COLUMN idCliente INT NOT NULL AFTER ativo;
+CREATE TABLE endereco (
+	id_endereco integer auto_increment NOT NULL,
+	cep VARCHAR(8) NOT NULL,
+	logradouro VARCHAR(500) NOT NULL,
+	cidade VARCHAR(100) NOT NULL,
+	uf VARCHAR(2) NOT NULL,
+	numero VARCHAR(5) NOT NULL,
+	CONSTRAINT endereco_pk PRIMARY KEY (id_endereco)
+);
+
+CREATE TABLE cliente (
+	id_cliente integer auto_increment NOT NULL,
+	cpf VARCHAR(11) NOT NULL,
+	nome VARCHAR(200) NOT NULL,
+	ativo BOOL NOT NULL,
+	id_endereco integer NOT NULL,
+	CONSTRAINT cliente_pk PRIMARY KEY (id_cliente),
+	CONSTRAINT cliente_fk FOREIGN KEY (id_endereco) REFERENCES endereco(id_endereco)
+);

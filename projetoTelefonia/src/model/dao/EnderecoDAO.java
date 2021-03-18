@@ -41,7 +41,7 @@ public class EnderecoDAO {
 
 	public boolean atualizar(Endereco endereco) {
 		boolean atualizado = false;
-		String sql = "UPDATE endereco SET CEP = ?, LOGRADOURO = ?, NUMERO = ?, UF = ?, CIDADE = ? WHERE IDENDERECO = ?";
+		String sql = "UPDATE endereco SET CEP = ?, LOGRADOURO = ?, NUMERO = ?, UF = ?, CIDADE = ? WHERE ID_ENDERECO = ?";
 		Connection conexao = Banco.getConnection();
 		PreparedStatement stmt = Banco.getPreparedStatement(conexao, sql);
 		try {
@@ -67,7 +67,7 @@ public class EnderecoDAO {
 
 	public boolean excluir(Integer idEndereco) {
 		boolean excluir = false;
-		String sql = "DELETE FROM endereco WHERE IDENDERECO = ?";
+		String sql = "DELETE FROM endereco WHERE ID_ENDERECO = ?";
 		Connection conexao = Banco.getConnection();
 		PreparedStatement stmt = Banco.getPreparedStatement(conexao, sql);
 		try {
@@ -88,7 +88,7 @@ public class EnderecoDAO {
 
 	public Endereco consultarUmEndereco(Integer idEndereco) {
 		Endereco endereco = null;
-		String sql = "SELECT * FROM endereco WHERE IDENDERECO = ? ";
+		String sql = "SELECT * FROM endereco WHERE ID_ENDERECO = ? ";
 		Connection conexao = Banco.getConnection();
 		PreparedStatement stmt = Banco.getPreparedStatement(conexao, sql);
 		try {
@@ -136,7 +136,7 @@ public class EnderecoDAO {
 
 	private Endereco converterDoResultSet(ResultSet resultadoConsulta) throws SQLException {
 		Endereco endereco = new Endereco();
-		endereco.setId(resultadoConsulta.getInt("idEndereco"));
+		endereco.setId(resultadoConsulta.getInt("id_endereco"));
 		endereco.setLogradouro(resultadoConsulta.getString("logradouro"));
 		endereco.setNumero(resultadoConsulta.getString("numero"));
 		endereco.setCidade(resultadoConsulta.getString("cidade"));
