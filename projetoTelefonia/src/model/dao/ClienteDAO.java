@@ -9,6 +9,7 @@ import java.util.List;
 
 import model.entity.Cliente;
 import model.entity.Endereco;
+import model.entity.Telefone;
 
 public class ClienteDAO {
 
@@ -104,6 +105,10 @@ public class ClienteDAO {
 		EnderecoDAO enderecoDAO = new EnderecoDAO();
 		Endereco enderecoCliente = enderecoDAO.consultarUmEndereco(idEndereco);
 		cliente.setEndereco(enderecoCliente);
+
+		TelefoneDAO telefoneDAO = new TelefoneDAO();
+		ArrayList<Telefone> telefones = (ArrayList<Telefone>) telefoneDAO.consultarPorIdCliente(cliente.getIdCliente());
+		cliente.setTelefones(telefones);
 		return cliente;
 	}
 }

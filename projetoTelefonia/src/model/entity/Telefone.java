@@ -6,7 +6,7 @@ public class Telefone {
 	private String codigoInternacional;
 	private String ddd;
 	private String numero;
-	private Cliente dono;
+	private Integer idCliente;
 	private boolean movel;
 	private boolean ativo;
 
@@ -14,24 +14,22 @@ public class Telefone {
 		super();
 	}
 
-	public Telefone(Integer id, String codigoInternacional, String ddd, String numero, Cliente dono, boolean movel,
-			boolean ativo) {
+	public Telefone(String codigoInternacional, String ddd, String numero, Integer idCliente, boolean movel) {
 		super();
-		this.id = id;
 		this.codigoInternacional = codigoInternacional;
 		this.ddd = ddd;
 		this.numero = numero;
-		this.dono = dono;
+		this.idCliente = idCliente;
 		this.movel = movel;
-		this.ativo = ativo;
+		this.ativo = this.idCliente == null;
 	}
 
-	public Cliente getDono() {
-		return dono;
+	public Integer getIdCliente() {
+		return idCliente;
 	}
 
-	public void setDono(Cliente dono) {
-		this.dono = dono;
+	public void setIdCliente(Integer idCliente) {
+		this.idCliente = idCliente;
 	}
 
 	public Integer getId() {
@@ -85,6 +83,7 @@ public class Telefone {
 	@Override
 	public String toString() {
 		return "Telefone [id=" + id + ", codigoInternacional=" + codigoInternacional + ", ddd=" + ddd + ", numero="
-				+ numero + ", dono=" + dono + ", movel=" + movel + ", ativo=" + ativo + "]";
+				+ numero + ", idCliente=" + idCliente + ", movel=" + movel + ", ativo=" + ativo + "]";
 	}
+
 }
