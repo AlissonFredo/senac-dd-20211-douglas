@@ -1,29 +1,30 @@
-package model.entity;
+package model.vo;
 
 import java.time.LocalDate;
 
-public class Vacina {
+public class VacinaVO {
 
+	private Integer idVacina;
 	private String nomeVacina;
 	private String paisOrigem;
 	private String estagioPesquisa;
 	private LocalDate dataInicio;
-	private Pessoa nomePesquisador;
+	private int idPesquisador;
 	private int fase;
 	private int quantidadeDoses;
 
-	public Vacina() {
+	public VacinaVO() {
 		super();
 	}
 
-	public Vacina(String nomeVacina, String paisOrigem, String estagioPesquisa, LocalDate dataInicio,
-			Pessoa nomePesquisador, int fase, int quantidadeDoses) {
+	public VacinaVO(String nomeVacina, String paisOrigem, String estagioPesquisa, LocalDate dataInicio,
+			int idPesquisador, int fase, int quantidadeDoses) {
 		super();
 		this.nomeVacina = nomeVacina;
 		this.paisOrigem = paisOrigem;
 		this.estagioPesquisa = estagioPesquisa;
 		this.dataInicio = dataInicio;
-		this.nomePesquisador = nomePesquisador;
+		this.idPesquisador = idPesquisador;
 		this.fase = fase;
 		this.quantidadeDoses = quantidadeDoses;
 	}
@@ -52,14 +53,6 @@ public class Vacina {
 		this.dataInicio = dataInicio;
 	}
 
-	public Pessoa getNomePesquisador() {
-		return nomePesquisador;
-	}
-
-	public void setNomePesquisador(Pessoa nomePesquisador) {
-		this.nomePesquisador = nomePesquisador;
-	}
-
 	public String getNomeVacina() {
 		return nomeVacina;
 	}
@@ -82,5 +75,21 @@ public class Vacina {
 
 	public void setQuantidadeDoses(int quantidadeDoses) {
 		this.quantidadeDoses = quantidadeDoses;
+	}
+
+	public Integer getIdVacina() {
+		return idVacina;
+	}
+
+	public void setIdVacina(Integer idVacina) {
+		this.idVacina = idVacina;
+	}
+
+	public int getIdPesquisador() {
+		return idPesquisador;
+	}
+
+	public void setIdPesquisador(int idPesquisador) {
+		this.idPesquisador = idPesquisador;
 	}
 }

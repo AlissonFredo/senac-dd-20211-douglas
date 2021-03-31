@@ -1,23 +1,24 @@
-package model.entity;
+package model.vo;
 
 import java.time.LocalDate;
 import java.util.List;
 
-public class Pessoa {
+public class PessoaVO {
 
+	private Integer idPessoa;
 	private String nome;
 	private String sexo;
 	private String cpf;
 	private LocalDate dataNacimento;
 	private int tipo;
-	private List<AplicacaoVacina> vacinacoes;
+	private List<AplicacaoVacinaVO> vacinacoes;
 
-	public Pessoa() {
+	public PessoaVO() {
 		super();
 	}
 
-	public Pessoa(String nome, String sexo, String cpf, LocalDate dataNacimento, int tipo,
-			List<AplicacaoVacina> vacinacoes) {
+	public PessoaVO(String nome, String sexo, String cpf, LocalDate dataNacimento, int tipo,
+			List<AplicacaoVacinaVO> vacinacoes) {
 		super();
 		this.nome = nome;
 		this.sexo = sexo;
@@ -25,6 +26,14 @@ public class Pessoa {
 		this.dataNacimento = dataNacimento;
 		this.tipo = tipo;
 		this.vacinacoes = vacinacoes;
+	}
+
+	public Integer getIdPessoa() {
+		return idPessoa;
+	}
+
+	public void setIdPessoa(Integer idPessoa) {
+		this.idPessoa = idPessoa;
 	}
 
 	public String getNome() {
@@ -67,11 +76,11 @@ public class Pessoa {
 		this.tipo = tipo;
 	}
 
-	public List<AplicacaoVacina> getVacinacoes() {
+	public List<AplicacaoVacinaVO> getVacinacoes() {
 		return vacinacoes;
 	}
 
-	public void setVacinacoes(List<AplicacaoVacina> vacinacoes) {
+	public void setVacinacoes(List<AplicacaoVacinaVO> vacinacoes) {
 		this.vacinacoes = vacinacoes;
 	}
 
