@@ -56,7 +56,7 @@ public class PessoaDAO {
 			resultado = stmt.executeUpdate() > 0;
 
 		} catch (SQLException e) {
-			System.out.println("Erro ao consultar pessoa: \n" + e.getMessage());
+			System.out.println("Erro ao excluir pessoa: \n" + e.getMessage());
 		}
 		return resultado;
 	}
@@ -69,7 +69,7 @@ public class PessoaDAO {
 			stmt.setInt(1, idPessoa);
 			ResultSet resultado = stmt.executeQuery();
 			if (resultado.next()) {
-				pessoaVO = this.converterDoResultSet(resultado);
+				pessoaVO = this.converterResultSet(resultado);
 			}
 		} catch (SQLException e) {
 			System.out.println("Erro ao consultar pessoa! \n" + e.getMessage());
@@ -84,7 +84,7 @@ public class PessoaDAO {
 				PreparedStatement stmt = Banco.getPreparedStatement(conn, query)) {
 			ResultSet resultado = stmt.executeQuery();
 			while (resultado.next()) {
-				PessoaVO pessoaVO = this.converterDoResultSet(resultado);
+				PessoaVO pessoaVO = this.converterResultSet(resultado);
 				pessoasVO.add(pessoaVO);
 			}
 		} catch (SQLException e) {
@@ -93,7 +93,7 @@ public class PessoaDAO {
 		return pessoasVO;
 	}
 
-	private PessoaVO converterDoResultSet(ResultSet resultado) throws SQLException {
+	private PessoaVO converterResultSet(ResultSet resultado) throws SQLException {
 		PessoaVO pessoaVO = new PessoaVO();
 		pessoaVO.setIdPessoa(resultado.getInt("id_pessoa"));
 		pessoaVO.setNome(resultado.getString("nome"));
