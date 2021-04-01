@@ -8,38 +8,38 @@ import java.util.ArrayList;
 
 import model.vo.PessoaVO;
 
-public class PessoaDAO {
+public class PessoaDAO implements BaseDAO<PessoaVO> {
 
-	public PessoaVO cadastrarPessoaDAO(PessoaVO pessoaVO) {
+	public PessoaVO cadastrarDAO(PessoaVO objetoVO) {
 		String query = "INSERT INTO pessoa (nome, sexo, cpf, tipo) VALUES (?, ?, ?, ?)";
 		try (Connection conn = Banco.getConnection();
 				PreparedStatement stmt = Banco.getPreparedStatementWithPk(conn, query)) {
-			stmt.setString(1, pessoaVO.getNome());
-			stmt.setString(2, pessoaVO.getSexo());
-			stmt.setString(3, pessoaVO.getCpf());
-			stmt.setInt(4, pessoaVO.getTipo());
+			stmt.setString(1, objetoVO.getNome());
+			stmt.setString(2, objetoVO.getSexo());
+			stmt.setString(3, objetoVO.getCpf());
+			stmt.setInt(4, objetoVO.getTipo());
 			stmt.executeUpdate();
 			ResultSet chaveGerada = stmt.getGeneratedKeys();
 			if (chaveGerada.next()) {
-				pessoaVO.setIdPessoa(chaveGerada.getInt(1));
+				objetoVO.setIdPessoa(chaveGerada.getInt(1));
 			}
 
 		} catch (SQLException e) {
 			System.out.println("Erro ao cadastrar pessoa! \n" + e.getMessage());
 		}
-		return pessoaVO;
+		return objetoVO;
 	}
 
-	public boolean atualizarPessoaDAO(PessoaVO pessoaVO) {
+	public boolean atualizarDAO(PessoaVO objetoVO) {
 		boolean resultado = false;
 		String query = "UPDATE pessoa SET nome = ?, sexo = ?, cpf = ?, tipo = ? WHERE id_pessoa = ?";
 		try (Connection conn = Banco.getConnection();
 				PreparedStatement stmt = Banco.getPreparedStatement(conn, query);) {
-			stmt.setString(1, pessoaVO.getNome());
-			stmt.setString(2, pessoaVO.getSexo());
-			stmt.setString(3, pessoaVO.getCpf());
-			stmt.setInt(4, pessoaVO.getTipo());
-			stmt.setInt(5, pessoaVO.getIdPessoa());
+			stmt.setString(1, objetoVO.getNome());
+			stmt.setString(2, objetoVO.getSexo());
+			stmt.setString(3, objetoVO.getCpf());
+			stmt.setInt(4, objetoVO.getTipo());
+			stmt.setInt(5, objetoVO.getIdPessoa());
 			resultado = stmt.executeUpdate() > 0;
 		} catch (SQLException e) {
 			System.out.println("Erro ao atualizar pessoa! \n" + e.getMessage());
@@ -47,12 +47,12 @@ public class PessoaDAO {
 		return resultado;
 	}
 
-	public boolean excluirPessoaDAO(Integer idPessoa) {
+	public boolean excluirDAO(Integer idObjetoVO) {
 		boolean resultado = false;
 		String query = "DELETE FROM pessoa WHERE id_pessoa = ?";
 		try (Connection conn = Banco.getConnection();
 				PreparedStatement stmt = Banco.getPreparedStatement(conn, query);) {
-			stmt.setInt(1, idPessoa);
+			stmt.setInt(1, idObjetoVO);
 			resultado = stmt.executeUpdate() > 0;
 
 		} catch (SQLException e) {
@@ -61,12 +61,12 @@ public class PessoaDAO {
 		return resultado;
 	}
 
-	public PessoaVO consultarUmaPessoaDAO(Integer idPessoa) {
+	public PessoaVO consultarUmDAO(Integer idObjetoVO) {
 		PessoaVO pessoaVO = null;
 		String query = "SELECT * FROM pessoa WHERE id_pessoa = ?";
 		try (Connection conn = Banco.getConnection();
 				PreparedStatement stmt = Banco.getPreparedStatement(conn, query);) {
-			stmt.setInt(1, idPessoa);
+			stmt.setInt(1, idObjetoVO);
 			ResultSet resultado = stmt.executeQuery();
 			if (resultado.next()) {
 				pessoaVO = this.converterResultSet(resultado);
@@ -77,7 +77,7 @@ public class PessoaDAO {
 		return pessoaVO;
 	}
 
-	public ArrayList<PessoaVO> consultarTodosPessoaDAO() {
+	public ArrayList<PessoaVO> consultarTodosDAO() {
 		ArrayList<PessoaVO> pessoasVO = new ArrayList<PessoaVO>();
 		String query = "SELECT * FROM pessoa";
 		try (Connection conn = Banco.getConnection();
@@ -93,7 +93,7 @@ public class PessoaDAO {
 		return pessoasVO;
 	}
 
-	private PessoaVO converterResultSet(ResultSet resultado) throws SQLException {
+	public PessoaVO converterResultSet(ResultSet resultado) throws SQLException {
 		PessoaVO pessoaVO = new PessoaVO();
 		pessoaVO.setIdPessoa(resultado.getInt("id_pessoa"));
 		pessoaVO.setNome(resultado.getString("nome"));
