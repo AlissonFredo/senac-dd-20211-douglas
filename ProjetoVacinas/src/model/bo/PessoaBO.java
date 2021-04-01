@@ -11,28 +11,28 @@ public class PessoaBO {
 
 	public String cadastrarPessoaBO(PessoaVO pessoaVO) {
 		String resultado = "";
-		pessoaDAO.cadastrarPessoaDAO(pessoaVO);
+		pessoaDAO.cadastrarDAO(pessoaVO);
 		return resultado;
 	}
 
 	public String excluirPessoaBO(PessoaVO pessoaVO) {
 		String resultado = "";
-		pessoaDAO.excluirPessoaDAO(pessoaVO.getIdPessoa());
+		pessoaDAO.excluirDAO(pessoaVO.getIdPessoa());
 		return resultado;
 	}
 
 	public String atualizarPessoaBO(PessoaVO pessoaVO) {
 		String resultado = "";
-		pessoaDAO.atualizarPessoaDAO(pessoaVO);
+		pessoaDAO.atualizarDAO(pessoaVO);
 		return resultado;
 	}
-	
+
 	public PessoaVO consultarPessoaBO(PessoaVO pessoaVO) {
-		return pessoaDAO.consultarUmaPessoaDAO(pessoaVO.getIdPessoa());
+		return pessoaDAO.consultarUmDAO(pessoaVO.getIdPessoa());
 	}
-	
-	public ArrayList<PessoaVO> consultarTodosPessoaBO(){
-		return pessoaDAO.consultarTodosPessoaDAO();
+
+	public ArrayList<PessoaVO> consultarTodosPessoaBO() {
+		return pessoaDAO.consultarTodosDAO();
 	}
 
 }

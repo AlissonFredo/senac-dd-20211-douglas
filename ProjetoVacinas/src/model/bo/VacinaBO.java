@@ -11,28 +11,28 @@ public class VacinaBO {
 
 	public String cadastrarVacinaBO(VacinaVO vacinaVO) {
 		String resultado = "";
-		vacinaDAO.cadastrarVacinaDAO(vacinaVO);
+		vacinaDAO.cadastrarDAO(vacinaVO);
 		return resultado;
 	}
 
 	public String excluirVacinaBO(VacinaVO vacinaVO) {
 		String resultado = "";
-		vacinaDAO.excluirVacinaDAO(vacinaVO.getIdVacina());
+		vacinaDAO.excluirDAO(vacinaVO.getIdVacina());
 		return resultado;
 	}
 
 	public String atualizarVacinaBO(VacinaVO vacinaVO) {
 		String resultado = "";
-		vacinaDAO.atualizarVacinaDAO(vacinaVO);
+		vacinaDAO.atualizarDAO(vacinaVO);
 		return resultado;
 	}
 
 	public VacinaVO consultarPessoaBO(VacinaVO vacinaVO) {
-		return vacinaDAO.consultarUmaVacinaDAO(vacinaVO.getIdVacina());
+		return vacinaDAO.consultarUmDAO(vacinaVO.getIdVacina());
 	}
 
 	public ArrayList<VacinaVO> consultarTodosVacinaBO() {
-		return vacinaDAO.consultarTodosVacinaDAO();
+		return vacinaDAO.consultarTodosDAO();
 	}
 
 }

@@ -1691,3 +1691,15 @@
 2021-04-01 13:01:50,359 [Worker-35: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/douglas/Documentos/meusProjetos/senac-dd-20211-douglas/ProjetoVacinas/src/main/resources
 2021-04-01 13:01:50,360 [Worker-35: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 2021-04-01 13:01:50,361 [Worker-35: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/douglas/Documentos/meusProjetos/senac-dd-20211-douglas/ProjetoVacinas/src/test/resources
+2021-04-01 13:49:15,766 [Worker-47: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2021-04-01 13:49:15,767 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/douglas/Documentos/meusProjetos/senac-dd-20211-douglas/ProjetoVacinas/src/main/resources
+2021-04-01 13:49:15,768 [Worker-47: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2021-04-01 13:49:15,769 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/douglas/Documentos/meusProjetos/senac-dd-20211-douglas/ProjetoVacinas/src/test/resources
+2021-04-01 13:49:24,480 [Worker-45: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2021-04-01 13:49:24,481 [Worker-45: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/douglas/Documentos/meusProjetos/senac-dd-20211-douglas/ProjetoVacinas/src/main/resources
+2021-04-01 13:49:24,486 [Worker-45: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2021-04-01 13:49:24,487 [Worker-45: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/douglas/Documentos/meusProjetos/senac-dd-20211-douglas/ProjetoVacinas/src/test/resources
+2021-04-01 13:50:11,841 [Worker-47: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2021-04-01 13:50:11,841 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/douglas/Documentos/meusProjetos/senac-dd-20211-douglas/ProjetoVacinas/src/main/resources
+2021-04-01 13:50:11,842 [Worker-47: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2021-04-01 13:50:11,842 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/douglas/Documentos/meusProjetos/senac-dd-20211-douglas/ProjetoVacinas/src/test/resources
