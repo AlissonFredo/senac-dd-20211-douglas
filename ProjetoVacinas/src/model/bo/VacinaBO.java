@@ -14,7 +14,7 @@ public class VacinaBO {
 	public String cadastrarVacinaBO(VacinaVO vacinaVO) {
 		PessoaDAO pessoaDAO = new PessoaDAO();
 		PessoaVO pesquisador = pessoaDAO.consultarPesquisador(vacinaVO.getPesquisador().getNome(),
-				vacinaVO.getPesquisador().getSexo());
+				vacinaVO.getPesquisador().getCpf());
 		VacinaVO vacina = vacinaDAO.consultarVacinaPertencePais(vacinaVO);
 		String resultado = "";
 
