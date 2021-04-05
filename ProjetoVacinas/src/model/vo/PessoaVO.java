@@ -84,4 +84,10 @@ public class PessoaVO {
 		this.vacinacoes = vacinacoes;
 	}
 
+	@Override
+	public String toString() {
+		return "PessoaVO [idPessoa=" + idPessoa + ", nome=" + nome + ", sexo=" + sexo + ", cpf=" + cpf
+				+ ", dataNacimento=" + dataNacimento + ", tipo=" + tipo + ", vacinacoes=" + vacinacoes + "]";
+	}
+
 }

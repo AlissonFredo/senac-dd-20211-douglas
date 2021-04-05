@@ -92,4 +92,12 @@ public class VacinaVO {
 	public void setPesquisador(PessoaVO pesquisador) {
 		this.pesquisador = pesquisador;
 	}
+
+	@Override
+	public String toString() {
+		return getIdVacina() + " - " + getNomeVacina() + " - " + getPaisOrigem() + " - " + getEstagioPesquisa() + " - "
+				+ getDataInicio() + " - " + getFase() + " - " + getQuantidadeDoses() + " - "
+				+ getPesquisador().getNome() + " - " + getPesquisador().getCpf();
+	}
+
 }

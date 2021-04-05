@@ -77,6 +77,23 @@ public class PessoaDAO implements BaseDAO<PessoaVO> {
 		return pessoaVO;
 	}
 
+	public PessoaVO consultarPesquisador(String nome, String cpf) {
+		PessoaVO pessoaVO = null;
+		String query = "SELECT * FROM pessoa WHERE nome = ? AND cpf = ?";
+		try (Connection conn = Banco.getConnection();
+				PreparedStatement stmt = Banco.getPreparedStatement(conn, query);) {
+			stmt.setString(1, nome.toUpperCase());
+			stmt.setString(2, cpf);
+			ResultSet resultado = stmt.executeQuery();
+			if (resultado.next()) {
+				pessoaVO = this.converterResultSet(resultado);
+			}
+		} catch (SQLException e) {
+			System.out.println("Erro ao consultar pessoa! \n" + e.getMessage());
+		}
+		return pessoaVO;
+	}
+
 	public ArrayList<PessoaVO> consultarTodosDAO() {
 		ArrayList<PessoaVO> pessoasVO = new ArrayList<PessoaVO>();
 		String query = "SELECT * FROM pessoa";
@@ -102,5 +119,4 @@ public class PessoaDAO implements BaseDAO<PessoaVO> {
 		pessoaVO.setTipo(resultado.getInt("tipo"));
 		return pessoaVO;
 	}
-
 }

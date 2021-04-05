@@ -16,11 +16,16 @@ public class VacinaDAO implements BaseDAO<VacinaVO> {
 				+ "VALUES (?, ?, ?, ?, ?, ?, ?)";
 		try (Connection conn = Banco.getConnection();
 				PreparedStatement stmt = Banco.getPreparedStatementWithPk(conn, query)) {
-			stmt.setString(1, objetoVO.getNomeVacina());
-			stmt.setString(2, objetoVO.getPaisOrigem());
+			stmt.setString(1, objetoVO.getNomeVacina().toUpperCase());
+			stmt.setString(2, objetoVO.getPaisOrigem().toUpperCase());
 			stmt.setString(3, objetoVO.getEstagioPesquisa());
 			stmt.setDate(4, java.sql.Date.valueOf(objetoVO.getDataInicio()));
-			stmt.setInt(5, objetoVO.getPesquisador().getIdPessoa());
+
+			PessoaDAO pessoaDAO = new PessoaDAO();
+			PessoaVO pessoaVO = pessoaDAO.consultarPesquisador(objetoVO.getPesquisador().getNome(),
+					objetoVO.getPesquisador().getCpf());
+
+			stmt.setInt(5, pessoaVO.getIdPessoa());
 			stmt.setInt(6, objetoVO.getFase());
 			stmt.setInt(7, objetoVO.getQuantidadeDoses());
 
@@ -105,15 +110,34 @@ public class VacinaDAO implements BaseDAO<VacinaVO> {
 		VacinaVO vacinaVO = new VacinaVO();
 		vacinaVO.setIdVacina(resultado.getInt("id_vacina"));
 		vacinaVO.setNomeVacina(resultado.getString("nome"));
-		vacinaVO.setPaisOrigem(resultado.getString("estagio_vacina"));
+		vacinaVO.setPaisOrigem(resultado.getString("pais_origem"));
+		vacinaVO.setEstagioPesquisa(resultado.getString("estagio_vacina"));
 		vacinaVO.setDataInicio(resultado.getDate("data_inicio_pesquisa").toLocalDate());
 		vacinaVO.setFase(resultado.getInt("fase"));
 		vacinaVO.setQuantidadeDoses(resultado.getInt("quantidade_doses"));
+
 		int idPesquisador = resultado.getInt("id_pesquisador_responsavel");
 		PessoaDAO pessoaDAO = new PessoaDAO();
 		PessoaVO pesquisador = pessoaDAO.consultarUmDAO(idPesquisador);
 		vacinaVO.setPesquisador(pesquisador);
 		return vacinaVO;
+	}
+
+	public VacinaVO consultarVacinaPertencePais(VacinaVO vacinaVO) {
+		VacinaVO vacina = null;
+		String query = "SELECT * FROM vacina WHERE nome = ? AND pais_origem = ?";
+		try (Connection conn = Banco.getConnection();
+				PreparedStatement stmt = Banco.getPreparedStatement(conn, query);) {
+			stmt.setString(1, vacinaVO.getNomeVacina().toUpperCase());
+			stmt.setString(2, vacinaVO.getPaisOrigem().toUpperCase());
+			ResultSet resultado = stmt.executeQuery();
+			if (resultado.next()) {
+				vacina = this.converterResultSet(resultado);
+			}
+		} catch (SQLException e) {
+			System.out.println("Erro ao consultar vacina por pais! \n" + e.getMessage());
+		}
+		return vacina;
 	}
 
 }
