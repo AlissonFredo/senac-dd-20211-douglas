@@ -2,9 +2,7 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="java.lang.Boolean"/>
     <fullyQualifiedTypeName name="com.mysql.cj.jdbc.interceptors.ConnectionLifecycleInterceptor"/>
-    <fullyQualifiedTypeName name="model.entity.Endereco"/>
     <fullyQualifiedTypeName name="java.lang.Exception"/>
-    <fullyQualifiedTypeName name="model.dao.EnderecoDAO"/>
     <fullyQualifiedTypeName name="model.bo.ClienteBO"/>
     <fullyQualifiedTypeName name="model.entity.Cliente"/>
     <fullyQualifiedTypeName name="model.dao.ClienteDAO"/>
@@ -29,9 +27,11 @@
     <fullyQualifiedTypeName name="java.lang.NumberFormatException"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="util.Util"/>
-    <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
     <fullyQualifiedTypeName name="model.dao.PessoaDAO"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
     <fullyQualifiedTypeName name="model.vo.PessoaVO"/>
     <fullyQualifiedTypeName name="model.vo.VacinaVO"/>
+    <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+    <fullyQualifiedTypeName name="model.dao.EnderecoDAO"/>
+    <fullyQualifiedTypeName name="model.entity.Endereco"/>
 </qualifiedTypeNameHistroy>
