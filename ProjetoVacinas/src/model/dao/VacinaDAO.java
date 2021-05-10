@@ -20,11 +20,9 @@ public class VacinaDAO implements BaseDAO<VacinaVO> {
 			stmt.setString(2, objetoVO.getPaisOrigem().toUpperCase());
 			stmt.setString(3, objetoVO.getEstagioPesquisa());
 			stmt.setDate(4, java.sql.Date.valueOf(objetoVO.getDataInicio()));
-
 			PessoaDAO pessoaDAO = new PessoaDAO();
-			PessoaVO pessoaVO = pessoaDAO.consultarPesquisador(objetoVO.getPesquisador().getNome(),
+			PessoaVO pessoaVO = pessoaDAO.consultarPesquisador(objetoVO.getPesquisador().getNome().toUpperCase(),
 					objetoVO.getPesquisador().getCpf());
-
 			stmt.setInt(5, pessoaVO.getIdPessoa());
 			stmt.setInt(6, objetoVO.getFase());
 			stmt.setInt(7, objetoVO.getQuantidadeDoses());

@@ -7,11 +7,19 @@ import model.vo.PessoaVO;
 
 public class PessoaBO {
 
-	private PessoaDAO pessoaDAO = new PessoaDAO();
+	PessoaDAO pessoaDAO = new PessoaDAO();
+	PessoaVO pessoaVO = new PessoaVO();
 
 	public String cadastrarPessoaBO(PessoaVO pessoaVO) {
-		String resultado = "";
-		pessoaDAO.cadastrarDAO(pessoaVO);
+		String resultado = "Erro ao cadastrar pessoa!";
+		if(!pessoaDAO.consultarPessoaCpf(pessoaVO.getCpf())) {
+			pessoaVO = pessoaDAO.cadastrarDAO(pessoaVO);
+			if(pessoaVO != null) {
+				resultado = "Pesssoa cadastrada com sucesso!";
+			}
+		}else {
+			resultado = "Pessoa ja existe no banco de dados!";
+		}
 		return resultado;
 	}
 

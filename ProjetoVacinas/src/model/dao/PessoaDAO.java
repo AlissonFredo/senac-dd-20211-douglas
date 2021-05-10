@@ -14,8 +14,8 @@ public class PessoaDAO implements BaseDAO<PessoaVO> {
 		String query = "INSERT INTO pessoa (nome, sexo, cpf, tipo) VALUES (?, ?, ?, ?)";
 		try (Connection conn = Banco.getConnection();
 				PreparedStatement stmt = Banco.getPreparedStatementWithPk(conn, query)) {
-			stmt.setString(1, objetoVO.getNome());
-			stmt.setString(2, objetoVO.getSexo());
+			stmt.setString(1, objetoVO.getNome().toUpperCase());
+			stmt.setString(2, objetoVO.getSexo().toLowerCase());
 			stmt.setString(3, objetoVO.getCpf());
 			stmt.setInt(4, objetoVO.getTipo());
 			stmt.executeUpdate();
@@ -118,5 +118,21 @@ public class PessoaDAO implements BaseDAO<PessoaVO> {
 		pessoaVO.setCpf(resultado.getString("cpf"));
 		pessoaVO.setTipo(resultado.getInt("tipo"));
 		return pessoaVO;
+	}
+
+	public boolean consultarPessoaCpf(String cpf) {
+		boolean resultado = false;
+		String query = "SELECT * FROM pessoa WHERE cpf = ?";
+		try(Connection conn = Banco.getConnection();
+				PreparedStatement stmt = Banco.getPreparedStatement(conn, query)) {
+			stmt.setString(1, cpf);
+			ResultSet retorno = stmt.executeQuery();
+			if(retorno.next()) {
+				resultado = true;
+			}
+		} catch (SQLException e) {
+			System.out.println("Erro na query de consulta pessoa por cpf!");
+		}
+		return resultado;
 	}
 }

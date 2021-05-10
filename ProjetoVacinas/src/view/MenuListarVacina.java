@@ -100,6 +100,11 @@ public class MenuListarVacina extends JFrame {
 		contentPane.add(btnExcluir);
 
 		btnEditar = new JButton("Editar");
+		btnEditar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnEditar.setBounds(478, 261, 117, 25);
 		contentPane.add(btnEditar);
 		

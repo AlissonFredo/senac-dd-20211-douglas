@@ -9,22 +9,26 @@ import model.vo.VacinaVO;
 
 public class VacinaBO {
 
-	private VacinaDAO vacinaDAO = new VacinaDAO();
+	VacinaDAO vacinaDAO = new VacinaDAO();
+	PessoaDAO pessoaDAO = new PessoaDAO();
+	PessoaVO pesquisador = new PessoaVO();
 
 	public String cadastrarVacinaBO(VacinaVO vacinaVO) {
-		PessoaDAO pessoaDAO = new PessoaDAO();
-		PessoaVO pesquisador = pessoaDAO.consultarPesquisador(vacinaVO.getPesquisador().getNome(),
+
+		pesquisador = pessoaDAO.consultarPesquisador(vacinaVO.getPesquisador().getNome(),
 				vacinaVO.getPesquisador().getCpf());
 		VacinaVO vacina = vacinaDAO.consultarVacinaPertencePais(vacinaVO);
 		String resultado = "";
 
 		if (pesquisador != null) {
-			if (vacina != null) {
+			if (vacina == null) {
 				vacinaDAO.cadastrarDAO(vacinaVO);
 				resultado = "VACINA CADASTRADA COM SUCESSO!";
+			} else {
+				resultado = "erro ao cadastrar vacina";
 			}
 		} else {
-			resultado = "ERRO AO CADASTRAR VACINA";
+			resultado = "pesquisador não cadastrado no banco de dados!";
 		}
 		return resultado;
 	}
